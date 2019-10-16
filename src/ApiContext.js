@@ -4,5 +4,6 @@ export default React.createContext({
   trips: [],
   plans: [],
   addNewTrip: () => {},
+  addPlan: () => {},
   deleteTrip: () => {}
 });

@@ -44,6 +44,15 @@ class App extends Component {
     })
   };
 
+  addNewPlan = (newPlan) => {
+    this.setState({
+      plans: [
+        ...this.state.notes,
+        newPlan
+      ]
+    }, this.componentDidMount())
+  }
+
   handleDeleteTrip = tripId => {
     this.setState({
       trips: this.state.trips.filter(trip => trip.id !== tripId)
@@ -55,6 +64,7 @@ class App extends Component {
       plans: this.state.plans,
       trips: this.state.trips,
       addNewTrip: this.addNewTrip,
+      addPlan: this.addNewPlan,
       deleteTrip: this.handleDeleteTrip
     }
 

@@ -3,7 +3,7 @@ import ApiContext from "../ApiContext";
 import config from "../config";
 // import PropTypes from 'prop-types';
 
-export default class AddFolder extends Component {
+class AddTrip extends Component {
   state = {
     trip_title: ''
   }
@@ -69,3 +69,5 @@ export default class AddFolder extends Component {
 //   history: PropTypes.object.isRequired,
 //   name: PropTypes.string.isRequired
 // }
+
+export default AddTrip;

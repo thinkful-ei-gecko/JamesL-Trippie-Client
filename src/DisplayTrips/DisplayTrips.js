@@ -1,5 +1,6 @@
 import React from 'react';
 import './DisplayTrips.css';
+import { Link } from 'react-router-dom';
 
 function DisplayTrips(props) {
   return (
@@ -10,7 +11,9 @@ function DisplayTrips(props) {
           <li key={trip.id}>
             
             {trip.trip_title}
-            <button type="submit" className="display-plans-btn">Display Plans</button>
+            <Link to='/trips/:tripId/displayPlans'>
+              <button type="submit" className="display-plans-btn">Display Plans</button>
+            </Link>
             <button type="submit" className="create-plans-btn">Add Plans</button>
           </li>
         )}
