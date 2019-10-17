@@ -54,11 +54,17 @@ class App extends Component {
     }, this.componentDidMount())
   }
 
-  handleDeleteTrip = tripId => {
+  deleteTrip = tripId => {
     this.setState({
       trips: this.state.trips.filter(trip => trip.id !== tripId)
     })
   };
+
+  deletePlan = planId => {
+    this.setState({
+      plans: this.state.plans.filter(plan => plan.id !== planId)
+    })
+  }
 
   render() {
     const value = {
@@ -66,7 +72,8 @@ class App extends Component {
       trips: this.state.trips,
       addNewTrip: this.addNewTrip,
       addPlan: this.addNewPlan,
-      deleteTrip: this.handleDeleteTrip
+      deleteTrip: this.deleteTrip,
+      deletePlan: this.deletePlan
     }
 
     return (

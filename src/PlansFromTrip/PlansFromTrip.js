@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext';
+import config from '../config';
 
 class PlansFromTrip extends Component {
   static defaultProps = {
@@ -9,6 +10,28 @@ class PlansFromTrip extends Component {
     }
   }
   static contextType = ApiContext
+
+  handleDeletePlans = e => {
+    const planId = e
+    
+    fetch(`${config.API_ENDPOINT}/plans/${planId}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => {
+        if(!res.ok)
+          return res.json()
+          .then(e => Promise.reject(e))
+      })
+      .then(() => {
+        this.context.deletePlan(planId)
+      })
+      .catch(error => {
+        console.error({error})
+      })
+  }
 
   getPlansForTrip = (plans = [], tripId) => (
     (!tripId)
@@ -20,7 +43,7 @@ class PlansFromTrip extends Component {
     const { tripId } = this.props.match.params
     const { plans = [] } = this.context
     const plansForTrip = this.getPlansForTrip(plans, tripId)
-    console.log(plans)
+    
     return(
       <section className="plans-container">
         <Link to="/">
@@ -33,7 +56,11 @@ class PlansFromTrip extends Component {
               {plan.from_date}
               {plan.to_date}
               {plan.notes}
-              <button className="delete-btn">&#x2715;</button>
+              <button 
+                className="delete-btn"
+                type="button"
+                onClick={() => this.handleDeletePlans(plan.id)}
+                >&#x2715;</button>
             </li>
           )}
         </ul>

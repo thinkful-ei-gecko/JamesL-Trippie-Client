@@ -23,7 +23,6 @@ class AddPlans extends Component {
       notes: this.state.notes,
       trip_id: this.props.match.params.tripId
     }
-    console.log(newPlan)
 
     fetch(`${config.API_ENDPOINT}/plans`, {
       method: "POST",
@@ -37,7 +36,6 @@ class AddPlans extends Component {
         return res.json()
       })
       .then((newPlan) => {
-        console.log(newPlan)
         this.context.addPlan(newPlan)
         this.props.history.push('/')
       })

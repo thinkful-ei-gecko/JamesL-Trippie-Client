@@ -9,8 +9,8 @@ class LandingPage extends Component {
   render(){
     return (
       <>
-      <Header />
-      <DisplayTrips trips={this.context.trips}/>
+        <Header />
+        <DisplayTrips trips={this.context.trips}/>
       </>
     )
   }
