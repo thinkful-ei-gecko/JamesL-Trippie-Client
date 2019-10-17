@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import config from '../config';
 import './App.css';
 import ApiContext from '../ApiContext';
 import AddTrip from '../AddTrip/AddTrip';
 import LandingPage from '../LandingPage/LandingPage';
-import DisplayPlans from '../DisplayPlans/DisplayPlans';
+import AddPlans from '../AddPlans/AddPlans';
+import PlansFromTrip from '../PlansFromTrip/PlansFromTrip';
 
 class App extends Component {
   state = {
@@ -47,7 +48,7 @@ class App extends Component {
   addNewPlan = (newPlan) => {
     this.setState({
       plans: [
-        ...this.state.notes,
+        ...this.state.plans,
         newPlan
       ]
     }, this.componentDidMount())
@@ -73,7 +74,8 @@ class App extends Component {
         <div className="App">
           <Route exact path='/' component = {LandingPage} />
           <Route path='/add-trip' component={AddTrip} />
-          <Route path='/trips/:tripId/displayPlans' component={DisplayPlans} />
+          <Route path='/trips/:tripId/displayPlans' component={PlansFromTrip} />
+          <Route path='/trips/:tripId/addPlans' component={AddPlans} />
         </div>
       </ApiContext.Provider>
     )

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import config from "../config";
+import { Link } from 'react-router-dom';
+
 // import PropTypes from 'prop-types';
 
 class AddTrip extends Component {
@@ -53,14 +55,19 @@ class AddTrip extends Component {
 
   render() {
     return (
-      <form className='addTripForm' onSubmit={e => this.handleAddTrip(e)}>
-        <div>
-          <label htmlFor="tripTitle">New Trip Title: </label>
-          <input type="text" id="tripTitle" value={this.state.trip_title} onChange={ this.getTripTitle } />
-          {this.validateTripTitle && <p className='validationElement'>{this.validateTripTitle()}</p>}
-          <button disabled={this.validateTripTitle()} type="submit">Submit</button>
-        </div>
-      </form>
+      <section className="add-trip-container">
+        <Link to="/">
+        <button className="go-back-btn">Back</button>
+        </Link>
+        <form className='addTripForm' onSubmit={e => this.handleAddTrip(e)}>
+          <div>
+            <label htmlFor="tripTitle">New Trip Title: </label>
+            <input type="text" id="tripTitle" value={this.state.trip_title} onChange={ this.getTripTitle } />
+            {this.validateTripTitle && <p className='validationElement'>{this.validateTripTitle()}</p>}
+            <button disabled={this.validateTripTitle()} type="submit">Submit</button>
+          </div>
+        </form>
+      </section>
     );
   }
 }
