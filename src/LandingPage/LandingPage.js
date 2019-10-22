@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import Header from '../Header/Header';
-import DisplayTrips from '../DisplayTrips/DisplayTrips';
-
-import ApiContext from '../ApiContext';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import './LandingPage.css';
 
 class LandingPage extends Component {
-  static contextType = ApiContext;
   render(){
     return (
-      <>
-        <Header />
-        <DisplayTrips trips={this.context.trips}/>
-      </>
+      <div className="landing-container">
+        <h1>Welcome to Trippie!</h1>
+        <p className="intro-para">Stay organized for your upcoming trips with this travel planner</p>
+        <Link to="/register"><button className="signup-btn">Sign Up</button></Link>
+        <Link to="/home"><button className="login-btn">Log In</button></Link>
+      </div>
     )
   }
 }

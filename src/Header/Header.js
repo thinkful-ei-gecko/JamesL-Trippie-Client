@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <>
-      <header>
-        <h1>Welcome to Trippie</h1>
+      <header className="headtag">
+        <h1>Hi 'username'!</h1>
         <p>Where would you like to go next?</p>
       </header>
       <Link to="/add-trip">

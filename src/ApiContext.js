@@ -5,6 +5,7 @@ export default React.createContext({
   plans: [],
   addNewTrip: () => {},
   addPlan: () => {},
+  updatePlan: () => {},
   deleteTrip: () => {},
   deletePlan: () => {}
 });

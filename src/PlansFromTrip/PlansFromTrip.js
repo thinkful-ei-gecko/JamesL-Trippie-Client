@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext';
-import config from '../config';
+import Moment from 'react-moment';
+import './PlansFromTrip.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
+import { deletePlanFetch, getPlansForTrip } from '../Service/Service';
 
 class PlansFromTrip extends Component {
   static defaultProps = {
@@ -11,15 +15,8 @@ class PlansFromTrip extends Component {
   }
   static contextType = ApiContext
 
-  handleDeletePlans = e => {
-    const planId = e
-    
-    fetch(`${config.API_ENDPOINT}/plans/${planId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json"
-      }
-    })
+  handleDeletePlans = planId => {
+    deletePlanFetch(planId)
       .then(res => {
         if(!res.ok)
           return res.json()
@@ -33,34 +30,44 @@ class PlansFromTrip extends Component {
       })
   }
 
-  getPlansForTrip = (plans = [], tripId) => (
-    (!tripId)
-      ? plans
-      : plans.filter(plan => plan.trip_id === Number(tripId))
-  )
-
   render() {
     const { tripId } = this.props.match.params
     const { plans = [] } = this.context
-    const plansForTrip = this.getPlansForTrip(plans, tripId)
+    const plansForTrip = getPlansForTrip(plans, tripId)
     
     return(
       <section className="plans-container">
-        <Link to="/">
-        <button className="go-back-btn">Back</button>
+        <Link to="/home">
+          <FontAwesomeIcon icon={faAngleDoubleLeft} className="back-chev-plans"></FontAwesomeIcon>
         </Link>
-        <ul>
+        <h3 className="plans-head">Plans for 'trip'</h3>
+        <Link to={`/trips/${tripId}/addPlans`}>
+          <button 
+            type="submit" 
+            className="create-plans-btn">&#x2b;</button>
+        </Link>
+        <ul className="display-plans">
           {plansForTrip.map(plan => 
-            <li key={plan.id}>
-              {plan.location}
-              {plan.from_date}
-              {plan.to_date}
-              {plan.notes}
-              <button 
-                className="delete-btn"
-                type="button"
-                onClick={() => this.handleDeletePlans(plan.id)}
-                >&#x2715;</button>
+            <li className="plan-list" key={plan.id}>
+              <div className="dates">
+                <Moment format="MM/DD/YY">{plan.from_date}</Moment> - <Moment format="MM/DD/YY">{plan.to_date}</Moment>
+              </div>
+              <div className="location">
+                {plan.location}
+              </div>
+              <div className="notes">
+                {plan.notes}
+              </div>
+
+              <Link to={`/edit/${plan.id}`}>
+                <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon>
+              </Link>
+              
+              <FontAwesomeIcon icon={faTrashAlt}
+                  className="delete-plan-btn" 
+                  type="button" 
+                  onClick={() => this.handleDeletePlans(plan.id)}
+                  ></FontAwesomeIcon>
             </li>
           )}
         </ul>

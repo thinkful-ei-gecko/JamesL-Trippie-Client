@@ -1,0 +1,60 @@
+.plans-container {
+  margin-top: 30px;
+}
+
+.back-chev-plans {
+  color: #dcffd6;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.plans-head {
+  font-size: 2em;
+}
+
+.create-plans-btn {
+  background-color: #e6aeae;
+  border: none;
+  border-radius: 50%;
+  padding: 0px 18px 7px 18px;
+  color: #dcffd6;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.display-plans {
+  color: #4d4d4d;
+  list-style: none;
+  border: solid white;
+}
+
+.plan-list {
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.display-plans > .plan-list:nth-child(even) {
+  background: #dcffd6;
+  border-radius: 5px;
+}
+.display-plans > .plan-list:nth-child(odd) {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.dates {
+  background: #4d4d4d;
+  color: #e6aeae;
+  padding: 8px;
+}
+
+.location {
+  font-size: 1.5em;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.notes {
+  padding: 8px;
+  margin-bottom: 10px;
+}

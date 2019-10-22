@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
-import config from "../config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
+import './AddTrip.css';
+import { addTripFetch } from "../Service/Service";
 import { Link } from 'react-router-dom';
 
 // import PropTypes from 'prop-types';
@@ -19,20 +22,14 @@ class AddTrip extends Component {
       trip_title: this.state.trip_title
     };
 
-    fetch(`${config.API_ENDPOINT}/trips`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(newTrip)
-    })
+    addTripFetch(newTrip)
       .then(res => {
         if (!res.ok) return res.json().then(e => Promise.reject(e));
         return res.json()
       })
       .then((trip) => {
         this.context.addNewTrip(trip);
-        this.props.history.push('/');
+        this.props.history.push('/home');
       })
       .catch(error => {
         console.error({ error });
@@ -56,15 +53,15 @@ class AddTrip extends Component {
   render() {
     return (
       <section className="add-trip-container">
-        <Link to="/">
-        <button className="go-back-btn">Back</button>
+        <Link to="/home">
+          <FontAwesomeIcon icon={faAngleDoubleLeft} className="back-chev"></FontAwesomeIcon>
         </Link>
-        <form className='addTripForm' onSubmit={e => this.handleAddTrip(e)}>
+        <form className='add-trip-form' onSubmit={e => this.handleAddTrip(e)}>
           <div>
-            <label htmlFor="tripTitle">New Trip Title: </label>
-            <input type="text" id="tripTitle" value={this.state.trip_title} onChange={ this.getTripTitle } />
-            {this.validateTripTitle && <p className='validationElement'>{this.validateTripTitle()}</p>}
-            <button disabled={this.validateTripTitle()} type="submit">Submit</button>
+            <label className="title-label" htmlFor="trip-title">New Trip Title: </label>
+            <input type="text" id="trip-title" value={this.state.trip_title} onChange={ this.getTripTitle } />
+            {this.validateTripTitle && <p className='validation-element'>{this.validateTripTitle()}</p>}
+            <button className="submit-title" disabled={this.validateTripTitle()} type="submit">Submit</button>
           </div>
         </form>
       </section>

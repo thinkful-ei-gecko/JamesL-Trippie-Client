@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import './DisplayTrips.css';
 import { Link } from 'react-router-dom';
-import config from '../config';
 import ApiContext from '../ApiContext';
+import { deleteTripFetch } from '../Service/Service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 class DisplayTrips extends Component {
 
   static contextType = ApiContext
 
-  handleDeleteTrips = e => {
-    const tripId = e
-
-    fetch(`${config.API_ENDPOINT}/trips/${tripId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json"
-      }
-    })
+  handleDeleteTrips = tripId => {
+    deleteTripFetch(tripId)
       .then(res => {
         if(!res.ok)
           return res.json()
@@ -28,33 +23,28 @@ class DisplayTrips extends Component {
       .catch(error => {
         console.error({error})
       })
-  }
+    }
+ 
 
   render() {
-
+    
     return (
       <div className="trips-list">
-        <h3>Upcoming Trips:</h3>
-        <ul>
+        <h3 className="upcoming-trips">Upcoming Trips:</h3>
+        <ul className="display-trips">
           {this.props.trips.map(trip => 
-            <li key={trip.id}>
-              
-              {trip.trip_title}
-
-              <Link to={`/trips/${trip.id}/displayPlans`}>
-                <button type="submit" className="display-plans-btn">Display Plans</button>
+            <div className="trip-container" key={trip.id}>
+              <Link className="trip-link" to={`/trips/${trip.id}/displayPlans`} style={{ textDecoration: 'none' }}>
+                <li className="trip-title-list">
+                    {trip.trip_title}
+                </li>
               </Link>
-
-              <Link to={`/trips/${trip.id}/addPlans`}>
-                <button type="submit" className="create-plans-btn">Add Plans</button>
-              </Link>
-
-              <button 
-                className="delete-btn" 
-                type="button" 
-                onClick={() => this.handleDeleteTrips(trip.id)}
-                >&#x2715;</button>
-            </li>
+              <FontAwesomeIcon icon={faTrashAlt}
+                  className="delete-btn" 
+                  type="button" 
+                  onClick={() => this.handleDeleteTrips(trip.id)}
+                  ></FontAwesomeIcon>
+            </div>
           )}
         </ul>
       </div>
