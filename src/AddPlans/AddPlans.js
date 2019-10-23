@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './AddPlans.css';
 import ApiContext from '../ApiContext';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 import { addPlanFetch } from '../Service/Service';
 
 class AddPlans extends Component {
@@ -52,20 +54,23 @@ class AddPlans extends Component {
     return (
       <section className="add-plans-container">
 
-        <button className="go-back-btn" onClick={this.handleCancel}>Back</button>
-
-        <h3>Create Plans</h3>
-        <p>Enter information on what you want to do!</p>
-        <form className="addPlansToTrip" onSubmit={e => this.handleAddPlans(e)}>
-            <label htmlFor="plan-location-entry">Location: </label>
+        <FontAwesomeIcon icon={faAngleDoubleLeft} 
+          className="back-chev-plans"
+          onClick={this.handleCancel}
+        ></FontAwesomeIcon>
+        
+        <h3 className="plan-headtag">Create Plans</h3>
+        <p className="create-p">Enter information on what you want to do!</p>
+        <form className="add-plans-form" onSubmit={e => this.handleAddPlans(e)}>
+            <label htmlFor="plan-location-entry">Location / Title: </label>
             <input name="location" type="text" id="plan-location-entry" onChange={this.onChangeHandle} required />
             <label htmlFor="from-date-entry">From Date: </label>
             <input name="from_date" type="date" onChange={this.onChangeHandle} />
             <label htmlFor="to-date-entry">To Date: </label>
             <input name="to_date" type="date" onChange={this.onChangeHandle} />
             <label htmlFor="plan-notes-entry">Notes: </label>
-            <textarea name="notes" type="text" id="plan-notes-entry" onChange={this.onChangeHandle} required />
-            <button type="submit">Submit</button>
+            <textarea name="notes" type="text" id="plan-notes-entry" rows="4" onChange={this.onChangeHandle} required />
+            <button type="submit" className="submit-new-btn">Submit</button>
         </form>
       </section>
     )

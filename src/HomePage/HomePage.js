@@ -11,7 +11,7 @@ class HomePage extends Component {
     return (
       <>
         <Header />
-        <DisplayTrips trips={this.context.trips}/>
+        <DisplayTrips/>
       </>
     )
   }

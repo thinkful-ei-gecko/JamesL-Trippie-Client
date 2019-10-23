@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
 import config from '../config';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 
 class EditPlans extends Component {
   static contextType = ApiContext;
@@ -81,19 +83,23 @@ class EditPlans extends Component {
   render() {
 
     return(
-      <section className="editPlan">
-        <h2>Edit Plan</h2>
-        <form className="editPlan-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="plan-location-entry">Location: </label>
+      <section className="edit-plan">
+        <FontAwesomeIcon icon={faAngleDoubleLeft} 
+          className="back-chev-plans"
+          onClick={this.handleCancel}
+        ></FontAwesomeIcon>
+
+        <h2 className="edit-plan-headtag">Edit Plan</h2>
+        <form className="add-plans-form" onSubmit={this.handleSubmit}>
+          <label htmlFor="plan-location-entry">Location / Title: </label>
           <input name="location" value={this.state.location} type="text" id="plan-location-entry" onChange={this.onChangeHandle} required />
           <label htmlFor="from-date-entry">From Date: </label>
           <input name="from_date" value={this.state.from_date} type="date" onChange={this.onChangeHandle} />
           <label htmlFor="to-date-entry">To Date: </label>
           <input name="to_date" value={this.state.to_date} type="date" onChange={this.onChangeHandle} />
           <label htmlFor="plan-notes-entry">Notes: </label>
-          <textarea name="notes" value={this.state.notes} type="text" id="plan-notes-entry" onChange={this.onChangeHandle} required />
-          <button type="submit">Submit</button>
-          <button type="button" onClick={this.handleCancel}>Cancel</button>          
+          <textarea name="notes" value={this.state.notes} type="text" id="plan-notes-entry" rows="4" onChange={this.onChangeHandle} required />
+          <button type="submit" className="submit-new-btn">Submit</button>        
         </form>
       </section>
     )

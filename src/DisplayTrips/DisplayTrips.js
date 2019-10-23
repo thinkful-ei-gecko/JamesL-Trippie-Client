@@ -30,9 +30,9 @@ class DisplayTrips extends Component {
     
     return (
       <div className="trips-list">
-        <h3 className="upcoming-trips">Upcoming Trips:</h3>
+        <h3 className="upcoming-trips-headtag">Upcoming Trips:</h3>
         <ul className="display-trips">
-          {this.props.trips.map(trip => 
+          {this.context.trips.map(trip => 
             <div className="trip-container" key={trip.id}>
               <Link className="trip-link" to={`/trips/${trip.id}/displayPlans`} style={{ textDecoration: 'none' }}>
                 <li className="trip-title-list">

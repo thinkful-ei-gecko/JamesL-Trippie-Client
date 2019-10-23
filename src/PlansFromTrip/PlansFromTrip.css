@@ -20,17 +20,27 @@
   color: #dcffd6;
   font-size: 3em;
   margin-bottom: 20px;
+  opacity: 0.75;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.create-plans-btn:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .display-plans {
-  color: #4d4d4d;
+  color: #3b3b3b;
   list-style: none;
-  border: solid white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0px;
 }
 
 .plan-list {
-  margin-bottom: 12px;
-  justify-content: center;
+  word-wrap: break-word;
+  margin: 0 auto 12px auto;
 }
 
 .display-plans > .plan-list:nth-child(even) {
@@ -43,8 +53,8 @@
 }
 
 .dates {
-  background: #4d4d4d;
-  color: #e6aeae;
+  background: #3b3b3b;
+  color: #ffffff;
   padding: 8px;
 }
 
@@ -56,5 +66,16 @@
 
 .notes {
   padding: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 1.5em;
+  margin: 0 60px 10px 60px;
+  color: #e6aeae;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: #6e1414;
 }

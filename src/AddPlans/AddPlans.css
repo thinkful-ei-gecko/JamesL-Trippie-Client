@@ -1,8 +1,65 @@
-* {
-  box-sizing: border-box;
-}
-
 .add-plans-container {
   margin-top: 30px;
 }
+
+.edit-plan {
+  margin-top: 30px;
+}
+
+.plan-headtag {
+  font-size: 1.5em;
+}
+
+.edit-plan-headtag {
+  margin-bottom: 30px;
+}
+
+.create-p {
+  font-size: 1em;
+  margin-bottom: 50px;
+}
+
+.add-plans-form {
+  background: #3b3b3b;
+  opacity: 0.9;
+  padding: 20px 0 30px 0;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+input, textarea {
+  display: block;
+  width: 80%;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+}
+
+.submit-new-btn {
+  display: block;
+  margin: 50px auto 0 auto;
+  background: #dcffd6;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.back-chev-plans:hover {
+  cursor: pointer;
+}
+
+
+.submit-new-btn:hover {
+  cursor: pointer;
+}
+
+
+
+
 

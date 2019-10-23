@@ -57,7 +57,6 @@ class App extends Component {
   };
 
   updatePlan = revisedPlan => {
-    console.log(revisedPlan)
     const newPlans = this.state.plans.map(plan =>
       (plan.id === revisedPlan.id)
         ? Object.assign({}, plan, revisedPlan)

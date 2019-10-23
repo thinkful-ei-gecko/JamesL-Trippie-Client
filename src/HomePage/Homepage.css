@@ -1,7 +1,7 @@
 .headtag {
   text-align: center;
-  margin: 50px 0 50px 0;
-  
+  margin: 50px auto 50px auto;
+  width: 80%
 }
 
 p {
@@ -17,4 +17,11 @@ p {
   margin-bottom: 25px;
   font-weight: bold;
   color: #4d4d4d;
+  opacity: 0.75;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.create-trip-btn:hover {
+  opacity: 1;
+  cursor: pointer;
 }

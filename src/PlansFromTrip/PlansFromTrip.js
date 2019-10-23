@@ -32,22 +32,26 @@ class PlansFromTrip extends Component {
 
   render() {
     const { tripId } = this.props.match.params
-    const { plans = [] } = this.context
+    const { plans = [], trips } = this.context
+    const trip = trips.find(trip => trip.id === Number(tripId)) || {}
     const plansForTrip = getPlansForTrip(plans, tripId)
-    
+    const sortedTrip = plansForTrip.sort(function(a, b) {
+      return new Date(a.from_date).getTime() - new Date(b.from_date).getTime()
+    })
+
     return(
       <section className="plans-container">
         <Link to="/home">
           <FontAwesomeIcon icon={faAngleDoubleLeft} className="back-chev-plans"></FontAwesomeIcon>
         </Link>
-        <h3 className="plans-head">Plans for 'trip'</h3>
+        <h3 className="plans-head">Plans for {trip.trip_title}</h3>
         <Link to={`/trips/${tripId}/addPlans`}>
           <button 
             type="submit" 
             className="create-plans-btn">&#x2b;</button>
         </Link>
         <ul className="display-plans">
-          {plansForTrip.map(plan => 
+          {sortedTrip.map(plan => 
             <li className="plan-list" key={plan.id}>
               <div className="dates">
                 <Moment format="MM/DD/YY">{plan.from_date}</Moment> - <Moment format="MM/DD/YY">{plan.to_date}</Moment>
@@ -60,11 +64,11 @@ class PlansFromTrip extends Component {
               </div>
 
               <Link to={`/edit/${plan.id}`}>
-                <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faEdit} className="icon"></FontAwesomeIcon>
               </Link>
               
               <FontAwesomeIcon icon={faTrashAlt}
-                  className="delete-plan-btn" 
+                  className="icon" 
                   type="button" 
                   onClick={() => this.handleDeletePlans(plan.id)}
                   ></FontAwesomeIcon>

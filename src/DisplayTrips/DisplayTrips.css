@@ -4,7 +4,7 @@
   padding: 30px 0 30px 0;
 }
 
-.upcoming-trips {
+.upcoming-trips-headtag {
   font-size: 1.5em;
 }
 
@@ -18,7 +18,7 @@
 
 .trip-container {
   position: relative;
-  width: 380px;
+  width: 80%;
   opacity: 0.75;
   transition: opacity 0.3s ease-in-out;
   margin: auto;
@@ -29,12 +29,12 @@
 }
 
 .trip-link {
-  color: #4d4d4d;
+  color: #3b3b3b;
   text-decoration: none;
 }
 
 .trip-link:visited {
-  color: #4d4d4d;
+  color: #3b3b3b;
 }
 
 .trip-link:hover {
