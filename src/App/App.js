@@ -3,12 +3,15 @@ import { Route } from 'react-router-dom';
 import config from '../config';
 import './App.css';
 import ApiContext from '../ApiContext';
-import AddTrip from '../AddTrip/AddTrip';
-import HomePage from '../HomePage/HomePage';
+import TokenService from '../Service/Token-service';
 import LandingPage from '../LandingPage/LandingPage';
-import EditPlans from '../EditPlans/EditPlans';
-import AddPlans from '../AddPlans/AddPlans';
+import LoginPage from '../Login/LoginPage';
+import RegisterPage from '../Registration/RegisterPage';
+import HomePage from '../HomePage/HomePage';
+import AddTrip from '../AddTrip/AddTrip';
 import PlansFromTrip from '../PlansFromTrip/PlansFromTrip';
+import AddPlans from '../AddPlans/AddPlans';
+import EditPlans from '../EditPlans/EditPlans';
 
 class App extends Component {
   state = {
@@ -17,9 +20,14 @@ class App extends Component {
     isLoading: false
   };
 
-  componentDidMount() {
+  fetchTripsAndPlans = () => {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/trips`),
+      fetch(`${config.API_ENDPOINT}/trips`, {
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${TokenService.getAuthToken()}`
+        }
+      }),
       fetch(`${config.API_ENDPOINT}/plans`)
     ])
       .then(([tripsRes, plansRes]) => {
@@ -53,17 +61,6 @@ class App extends Component {
         ...this.state.plans,
         newPlan
       ]
-    }, this.componentDidMount())
-  };
-
-  updatePlan = revisedPlan => {
-    const newPlans = this.state.plans.map(plan =>
-      (plan.id === revisedPlan.id)
-        ? Object.assign({}, plan, revisedPlan)
-        : plan
-    )
-    this.setState({
-      plans: newPlans
     })
   };
 
@@ -94,8 +91,10 @@ class App extends Component {
       <ApiContext.Provider value={value}>
         <div className="App">
           <Route exact path='/' component={LandingPage} />
-          <Route path='/home' component={HomePage} />
-          <Route path='/add-trip' component={AddTrip} />
+          <Route path='/login' component={LoginPage} />
+          <Route path='/register' component={RegisterPage} />
+          <Route path='/home' render={ () => <HomePage fetch = {this.fetchTripsAndPlans} /> } />
+          <Route path='/:userId/add-trip' component={AddTrip} />
           <Route path='/trips/:tripId/displayPlans' component={PlansFromTrip} />
           <Route path='/trips/:tripId/addPlans' component={AddPlans} />
           <Route path='/edit/:planId' component={EditPlans} />

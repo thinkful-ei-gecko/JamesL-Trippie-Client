@@ -57,6 +57,7 @@ input, textarea {
 
 .submit-new-btn:hover {
   cursor: pointer;
+  color: #6e1414;
 }
 
 

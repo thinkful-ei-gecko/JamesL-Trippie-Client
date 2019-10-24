@@ -43,7 +43,7 @@ class DisplayTrips extends Component {
                   className="delete-btn" 
                   type="button" 
                   onClick={() => this.handleDeleteTrips(trip.id)}
-                  ></FontAwesomeIcon>
+              ></FontAwesomeIcon>
             </div>
           )}
         </ul>

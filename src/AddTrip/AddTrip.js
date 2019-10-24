@@ -19,7 +19,8 @@ class AddTrip extends Component {
     e.preventDefault();
 
     const newTrip = {
-      trip_title: this.state.trip_title
+      trip_title: this.state.trip_title,
+      user_id: this.props.match.params.userId
     };
 
     addTripFetch(newTrip)

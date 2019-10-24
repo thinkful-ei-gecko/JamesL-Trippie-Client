@@ -1,3 +1,7 @@
+.homepage {
+  margin-top: 140px;
+}
+
 .headtag {
   text-align: center;
   margin: 50px auto 50px auto;
@@ -16,7 +20,7 @@ p {
   margin-top: 7px;
   margin-bottom: 25px;
   font-weight: bold;
-  color: #4d4d4d;
+  color: #3b3b3b;
   opacity: 0.75;
   transition: opacity 0.3s ease-in-out;
 }
@@ -24,4 +28,23 @@ p {
 .create-trip-btn:hover {
   opacity: 1;
   cursor: pointer;
+  color: #6e1414;
+}
+
+.logout-btn {
+  border: none;
+  border-radius: 12px;
+  background-color: #dcffd6;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px 20px 0;
+  padding: 8px;
+  color: #3b3b3b;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: #6e1414;
 }

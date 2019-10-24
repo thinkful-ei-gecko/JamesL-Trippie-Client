@@ -10,6 +10,7 @@
     "awesome": "0.0.7",
     "font": "0.0.4",
     "font-awesome": "^4.7.0",
+    "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

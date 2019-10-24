@@ -41,15 +41,19 @@ class PlansFromTrip extends Component {
 
     return(
       <section className="plans-container">
+
         <Link to="/home">
           <FontAwesomeIcon icon={faAngleDoubleLeft} className="back-chev-plans"></FontAwesomeIcon>
         </Link>
-        <h3 className="plans-head">Plans for {trip.trip_title}</h3>
+
+          <h3 className="plans-head">Plans for {trip.trip_title}</h3>
+
         <Link to={`/trips/${tripId}/addPlans`}>
           <button 
             type="submit" 
             className="create-plans-btn">&#x2b;</button>
         </Link>
+
         <ul className="display-plans">
           {sortedTrip.map(plan => 
             <li className="plan-list" key={plan.id}>
@@ -71,10 +75,11 @@ class PlansFromTrip extends Component {
                   className="icon" 
                   type="button" 
                   onClick={() => this.handleDeletePlans(plan.id)}
-                  ></FontAwesomeIcon>
+              ></FontAwesomeIcon>
             </li>
           )}
         </ul>
+
       </section>
     )
   }
