@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
+import '../AddPlans/AddPlans.css';
 import config from '../config';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';

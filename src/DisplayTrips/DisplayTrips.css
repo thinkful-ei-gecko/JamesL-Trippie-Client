@@ -65,3 +65,16 @@
   color: #6e1414;
 }
 
+@media only screen and (min-width: 630px) {
+
+  .trip-container {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .trip-container {
+    width: 40%;
+  }
+}

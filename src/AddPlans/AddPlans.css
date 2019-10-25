@@ -28,8 +28,8 @@
 label {
   display: block;
   text-align: left;
-  margin-left: 30px;
-  margin-bottom: 15px;
+  margin: 0 auto 15px auto;
+  width: 80%;
   font-weight: bold;
 }
 
@@ -58,6 +58,38 @@ input, textarea {
 .submit-new-btn:hover {
   cursor: pointer;
   color: #6e1414;
+}
+
+@media only screen and (min-width: 630px) {
+
+  .add-plans-form {
+    width: 80%;
+    margin: auto;
+  }
+
+  label {
+    width: 58%;
+  }
+
+  input, textarea {
+    width: 55%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+
+  .add-plans-form {
+    width: 60%;
+    margin: auto;
+  }
+
+  label {
+    width: 51%;
+  }
+
+  input, textarea {
+    width: 50%;
+  }
 }
 
 

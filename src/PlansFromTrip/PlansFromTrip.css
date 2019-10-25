@@ -79,3 +79,31 @@
   cursor: pointer;
   color: #6e1414;
 }
+
+@media only screen and (min-width: 630px) {
+
+  .display-plans  {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 740px) {
+
+  .display-plans  {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+
+  .display-plans  {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1064px) {
+
+  .display-plans  {
+    width: 35%;
+  }
+}
