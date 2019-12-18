@@ -18,7 +18,7 @@ class EditPlans extends Component {
   }
 
   componentDidMount() {
-    const { planId } = this.props.match.params
+    const {planId }= this.props.match.params
     fetch(`${config.API_ENDPOINT}/plans/${planId}`, {
       method: 'GET',
       headers: {

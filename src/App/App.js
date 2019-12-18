@@ -64,6 +64,17 @@ class App extends Component {
     })
   };
 
+  updatePlan = revisedPlan => {
+    const newPlans = this.state.plans.map(plan =>
+      (plan.id === revisedPlan.id)
+        ? Object.assign({}, plan, revisedPlan)
+        : plan
+    )
+    this.setState({
+      plans: newPlans
+    })
+  };
+
   deleteTrip = tripId => {
     this.setState({
       trips: this.state.trips.filter(trip => trip.id !== tripId)

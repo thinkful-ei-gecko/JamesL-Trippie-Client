@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext';
+import config from '../config';
 import Moment from 'react-moment';
+import TokenService from '../Service/Token-service';
 import './PlansFromTrip.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +16,37 @@ class PlansFromTrip extends Component {
     }
   }
   static contextType = ApiContext
+
+  state = {
+    plans: [],
+    trips: []
+  }
+
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/trips`, {
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${TokenService.getAuthToken()}`
+        }
+      }),
+      fetch(`${config.API_ENDPOINT}/plans`)
+    ])
+      .then(([tripsRes, plansRes]) => {
+        if(!tripsRes.ok)
+          return tripsRes.json().then(e => Promise.reject(e));
+        if(!plansRes.ok)
+          return plansRes.json().then(e => Promise.reject(e));
+
+        return Promise.all([tripsRes.json(), plansRes.json()]);
+      })
+      .then(([trips, plans, isLoading]) => {
+        this.setState({ trips, plans, isLoading: true })
+      })
+      .catch(error => {
+        console.error({error});
+      })
+  };
 
   handleDeletePlans = planId => {
     deletePlanFetch(planId)
@@ -32,7 +65,8 @@ class PlansFromTrip extends Component {
 
   render() {
     const { tripId } = this.props.match.params
-    const { plans = [], trips } = this.context
+    const {plans, trips} = this.state
+    // const { plans = [], trips } = this.context
     const trip = trips.find(trip => trip.id === Number(tripId)) || {}
     const plansForTrip = getPlansForTrip(plans, tripId)
     const sortedTrip = plansForTrip.sort(function(a, b) {
