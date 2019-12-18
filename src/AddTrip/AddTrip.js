@@ -6,8 +6,6 @@ import './AddTrip.css';
 import { addTripFetch } from "../Service/Service";
 import { Link } from 'react-router-dom';
 
-// import PropTypes from 'prop-types';
-
 class AddTrip extends Component {
   state = {
     trip_title: ''
@@ -69,10 +67,5 @@ class AddTrip extends Component {
     );
   }
 }
-
-// AddNewTrip.propTypes = {
-//   history: PropTypes.object.isRequired,
-//   name: PropTypes.string.isRequired
-// }
 
 export default AddTrip;
