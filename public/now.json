@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "alias": "trippie-planner",
+  "name": "trippie",
+  "routes": [
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.html" }
+  ]
+}
