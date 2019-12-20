@@ -8,8 +8,10 @@ class LandingPage extends Component {
       <div className="landing-container">
         <h1>Welcome to Trippie!</h1>
         <p className="intro-para">Stay organized for your upcoming trips with this travel planner</p>
-        <Link to="/register"><button className="signup-btn">Sign Up</button></Link>
-        <Link to="/login"><button className="login-btn">Log In</button></Link>
+        <div className="landing-btns">
+          <Link to="/register"><button className="signup-btn">Sign Up</button></Link>
+          <Link to="/login"><button className="login-btn">Log In</button></Link>
+        </div>
       </div>
     )
   }
