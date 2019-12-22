@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Trippie Planner
 
-## Available Scripts
+## Project completed by James Lee
 
-In the project directory, you can run:
+## Live App: https://trippie-planner.now.sh
 
-### `npm start`
+## Demo Account => Username: demo, Password: Password1!
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Description:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Trippie Planner is an easy-to-use travel planner to keep track of all upcoming trips and plans.  Trippie users will be able to create trips with a personalized title and associate plans to each specific trips.  Plan information includes location/title, dates, and notes for your plans.  Trippie allows users to edit each plan as they change.  Users can also delete trips and plans from their account.
 
-### `npm test`
+<img width="800" alt="Trippie-home" src="https://user-images.githubusercontent.com/52637953/71324202-9cf72a80-24a1-11ea-9494-054bc34b7ee1.png">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="800" alt="Trippie-Plans" src="https://user-images.githubusercontent.com/52637953/71324221-d0d25000-24a1-11ea-8924-9ad3a636a6d1.png">
 
-### `npm run build`
+<img width="800" alt="Trippie-Create-Plans" src="https://user-images.githubusercontent.com/52637953/71324230-f4959600-24a1-11ea-9468-29b4b1a3272a.png">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Full Stack Core Technologies: 
+**Front-end**: React, HTML5, CSS3 </br>
+**Back-end**: Node.js, PostGreSQL, RESTful API, Express.js, Knex
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# User Stories:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### As a user, I am able to...
 
-### `npm run eject`
+### 1.) Create an account and log in to utilize Trippie resources.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2.) Access the Trippie app on mobile or desktop with a clean and minimalistic design.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3.) Add upcoming trips with personalized titles.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 4.) Add any plans to specific trips.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 5.) Include a location or title, dates, and notes to each plan.
 
-## Learn More
+### 6.) Edit each plan as they change.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 7.) Delete specific trips and/or plans.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 8.) Log out of my account when I am finished using the app.
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#
+|  Repository  |  Link  |
+| -- |  -- |
+|  Front-end  |  [https://github.com/thinkful-ei-gecko/JamesL-Trippie-Client](https://github.com/thinkful-ei-gecko/JamesL-Trippie-Client)  |  
+|  Back-end  |   [https://github.com/thinkful-ei-gecko/JamesL-Trippie-Server](https://github.com/thinkful-ei-gecko/JamesL-Trippie-Server)  | 
