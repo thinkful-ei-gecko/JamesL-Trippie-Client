@@ -11,8 +11,9 @@ class AddPlans extends Component {
     from_date: '',
     to_date: '',
     notes: '',
+    hasError: false
   }
-
+  
   static contextType = ApiContext
 
   handleAddPlans = (e) => {

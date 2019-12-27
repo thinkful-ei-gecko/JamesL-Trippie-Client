@@ -81,11 +81,6 @@ class App extends Component {
     })
   };
 
-  deletePlan = planId => {
-    this.setState({
-      plans: this.state.plans.filter(plan => plan.id !== planId)
-    })
-  };
 
   render() {
     const value = {
@@ -95,7 +90,6 @@ class App extends Component {
       addPlan: this.addNewPlan,
       updatePlan: this.updatePlan,
       deleteTrip: this.deleteTrip,
-      deletePlan: this.deletePlan
     }
 
     return (

@@ -48,6 +48,12 @@ class PlansFromTrip extends Component {
       })
   };
 
+  deletePlan = planId => {
+    this.setState({
+      plans: this.state.plans.filter(plan => plan.id !== planId)
+    })
+  };
+
   handleDeletePlans = planId => {
     deletePlanFetch(planId)
       .then(res => {
@@ -56,7 +62,7 @@ class PlansFromTrip extends Component {
           .then(e => Promise.reject(e))
       })
       .then(() => {
-        this.context.deletePlan(planId)
+        this.deletePlan(planId)
       })
       .catch(error => {
         console.error({error})
