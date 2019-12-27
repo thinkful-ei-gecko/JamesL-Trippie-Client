@@ -96,7 +96,7 @@ class PlansFromTrip extends Component {
           {sortedTrip.map(plan => 
             <li className="plan-list" key={plan.id}>
               <div className="dates">
-                <Moment add={{days: 1}} format="MM/DD/YY">{plan.from_date}</Moment> - <Moment add={{days: 1}} format="MM/DD/YY">{plan.to_date}</Moment>
+                <Moment utc format="MM/DD/YY">{plan.from_date}</Moment> - <Moment utc format="MM/DD/YY">{plan.to_date}</Moment>
               </div>
               <div className="location">
                 {plan.location}
