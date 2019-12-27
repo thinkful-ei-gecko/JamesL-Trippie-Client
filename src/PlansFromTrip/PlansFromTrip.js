@@ -41,7 +41,8 @@ class PlansFromTrip extends Component {
         return Promise.all([tripsRes.json(), plansRes.json()]);
       })
       .then(([trips, plans, isLoading]) => {
-        this.setState({ trips, plans, isLoading: true })
+        const specificPlans = getPlansForTrip(plans, this.props.match.params.tripId)
+        this.setState({ trips, plans: specificPlans, isLoading: true })
       })
       .catch(error => {
         console.error({error});
@@ -72,13 +73,10 @@ class PlansFromTrip extends Component {
   render() {
     const { tripId } = this.props.match.params
     const {plans, trips} = this.state
-    // const { plans = [], trips } = this.context
     const trip = trips.find(trip => trip.id === Number(tripId)) || {}
-    const plansForTrip = getPlansForTrip(plans, tripId)
-    const sortedTrip = plansForTrip.sort(function(a, b) {
+    const sortedTrip = this.state.plans.sort(function(a, b) {
       return new Date(a.from_date).getTime() - new Date(b.from_date).getTime()
     })
-
     return(
       <section className="plans-container">
 
@@ -98,7 +96,7 @@ class PlansFromTrip extends Component {
           {sortedTrip.map(plan => 
             <li className="plan-list" key={plan.id}>
               <div className="dates">
-                <Moment format="MM/DD/YY">{plan.from_date}</Moment> - <Moment format="MM/DD/YY">{plan.to_date}</Moment>
+                <Moment add={{days: 1}} format="MM/DD/YY">{plan.from_date}</Moment> - <Moment add={{days: 1}} format="MM/DD/YY">{plan.to_date}</Moment>
               </div>
               <div className="location">
                 {plan.location}
